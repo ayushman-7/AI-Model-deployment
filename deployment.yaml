@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: model-api
+  template:
+    metadata:
+      labels:
+        app: model-api
+    spec:
+      containers:
+      - name: model-api
+        image: airegistry76.azurecr.io/model-api:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: AZURE_STORAGE_CONNECTION_STRING
+          value: "htaWJjv3XBLDX2Ggexw+uJL/fTFW9N9fIrw9SSlVv/wbjvsRAuYosTM3GWZZ9I+SvSwAqg+Xg5SD+AStNd5sdw=="
